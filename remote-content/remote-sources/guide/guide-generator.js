@@ -67,6 +67,7 @@ const SPECIAL_GUIDES = {
 const DYNAMIC_GUIDES = [
   {
     dirName: 'inference-scheduling',
+    sourceDir: 'well-lit-paths/inference-scheduling',
     title: 'Intelligent Inference Scheduling',
     description: 'Deploy vLLM with intelligent load balancing and prefix-cache aware routing to reduce latency and increase throughput on Kubernetes',
     sidebarPosition: 3,
@@ -74,6 +75,7 @@ const DYNAMIC_GUIDES = [
   },
   {
     dirName: 'tiered-prefix-cache',
+    sourceDir: 'well-lit-paths/tiered-prefix-cache',
     title: 'Prefix Cache Offloading',
     description: 'Offload KV cache to CPU memory with vLLM to extend GPU capacity and serve longer contexts in distributed LLM inference',
     sidebarPosition: 4,
@@ -82,6 +84,7 @@ const DYNAMIC_GUIDES = [
   },
   {
     dirName: 'tiered-prefix-cache/cpu',
+    sourceDir: 'well-lit-paths/tiered-prefix-cache/cpu',
     title: 'Prefix Cache Offloading - CPU',
     description: 'Offload KV cache to CPU memory with vLLM to extend GPU capacity and serve longer contexts in distributed LLM inference',
     sidebarPosition: 5,
@@ -90,6 +93,7 @@ const DYNAMIC_GUIDES = [
   },
   {
     dirName: 'pd-disaggregation',
+    sourceDir: 'well-lit-paths/pd-disaggregation',
     title: 'Prefill/Decode Disaggregation',
     description: 'Separate prefill and decode operations with vLLM disaggregation to improve latency and throughput for large models like GPT-OSS-120B',
     sidebarPosition: 6,
@@ -97,6 +101,7 @@ const DYNAMIC_GUIDES = [
   },
   {
     dirName: 'precise-prefix-cache-aware',
+    sourceDir: 'well-lit-paths/precise-prefix-cache-aware',
     title: 'Precise Prefix Cache Aware Routing',
     description: 'Enable precise prefix cache routing with vLLM KV-Events to increase cache hit rates and eliminate indexing services overhead',
     sidebarPosition: 7,
@@ -104,6 +109,7 @@ const DYNAMIC_GUIDES = [
   },
   {
     dirName: 'predicted-latency-based-scheduling',
+    sourceDir: 'well-lit-paths/predicted-latency-based-scheduling',
     title: 'Predicted Latency Based Load Balancing',
     description: 'Experimental SLO-aware routing with ML-based latency prediction to meet service level objectives and optimize request placement',
     sidebarPosition: 8,
@@ -111,6 +117,7 @@ const DYNAMIC_GUIDES = [
   },
   {
     dirName: 'wide-ep-lws',
+    sourceDir: 'well-lit-paths/wide-ep-lws',
     title: 'Wide Expert Parallelism with LeaderWorkerSet',
     description: 'Deploy large MoE models like DeepSeek-R1 using wide expert parallelism and LeaderWorkerSet across multi-node GPU clusters',
     sidebarPosition: 9,
@@ -118,6 +125,7 @@ const DYNAMIC_GUIDES = [
   },
   {
     dirName: 'simulated-accelerators',
+    sourceDir: 'supporting/simulated-accelerators',
     title: 'Accelerator Simulation',
     description: 'Test llm-d at scale without GPUs using the inference simulator to validate autoscaling, scheduling, and system behavior',
     sidebarPosition: 10,
@@ -167,7 +175,7 @@ function createGuidePlugins() {
   
   // Add dynamic guides
   DYNAMIC_GUIDES.forEach((guide) => {
-    const sourceFile = `guides/${guide.dirName}/README.md`;
+    const sourceFile = `guides/${guide.sourceDir || guide.dirName}/README.md`;
     const targetFilename = guide.targetFilename || `${guide.dirName}.md`;
     
     plugins.push([
